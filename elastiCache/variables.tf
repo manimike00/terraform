@@ -1,7 +1,3 @@
-variable "assume_role" {
-  type = string
-}
-
 variable "name" {
   type = string
 }
