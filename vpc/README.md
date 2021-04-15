@@ -1,18 +1,4 @@
-## VPC
-
-### Setup Environment variables
-
-```shell
-export BUCKETNAME=bucketname
-export ENV=env
-```
-### Initialise Terraform
-```shell
-terraform init \
-  -backend-config="bucket=$BUCKETNAME" \
-  -backend-config="key=$ENV/VPC/terraform.state"
-```
-
+# VPC
 ### Terraform Module Script
 ```terraform
 module "vpc" {
@@ -23,4 +9,15 @@ module "vpc" {
 }
 ```
 
-
+## Steps:
+### 1. Setup Environment variables
+```shell
+export BUCKETNAME=bucketname
+export ENV=env
+```
+### Initialise Terraform
+```shell
+terraform init \
+  -backend-config="bucket=$BUCKETNAME" \
+  -backend-config="key=$ENV/VPC/terraform.state"
+```
