@@ -1,13 +1,5 @@
 # VPC
 ### Terraform Module Script
-```hcl
-module "vpc" {
-  source      = "github.com/manimike00/terraform/vpc"
-  name        = "demo"          # Name of VPC
-  cidr_block  = "10.0.0.0/16"   # CIDR Block for VPC 
-  subnets     = 3               # Depends on Availability Zones
-}
-```
 ```terraform
 module "vpc" {
   source      = "github.com/manimike00/terraform/vpc"
