@@ -1,11 +1,19 @@
 # VPC
 ### Terraform Module Script
+```hcl
+module "vpc" {
+  source      = "github.com/manimike00/terraform/vpc"
+  name        = "demo"          # Name of VPC
+  cidr_block  = "10.0.0.0/16"   # CIDR Block for VPC 
+  subnets     = 3               # Depends on Availability Zones
+}
+```
 ```terraform
 module "vpc" {
   source      = "github.com/manimike00/terraform/vpc"
-  name        = "demo"
-  cidr_block  = "10.0.0.0/16"
-  subnets     = 3
+  name        = "demo"          # Name of VPC
+  cidr_block  = "10.0.0.0/16"   # CIDR Block for VPC 
+  subnets     = 3               # Depends on Availability Zones
 }
 ```
 
@@ -15,9 +23,14 @@ module "vpc" {
 export BUCKETNAME=bucketname
 export ENV=env
 ```
-### Initialise Terraform
+### 2. Initialise Terraform
 ```shell
 terraform init \
   -backend-config="bucket=$BUCKETNAME" \
   -backend-config="key=$ENV/VPC/terraform.state"
+```
+### 3. Deploy VPC
+```shell
+terraform plan
+terraform apply --auto-approve
 ```
