@@ -10,7 +10,7 @@ resource "aws_elasticsearch_domain_policy" "main" {
             "Principal": "*",
             "Effect": "Allow",
             "Condition": {
-                "IpAddress": {"aws:SourceIp": "127.0.0.1/32"}
+                "IpAddress": {"aws:SourceIp": "${var.sourceIp}"}
             },
             "Resource": "${aws_elasticsearch_domain.default.arn}/*"
         }

@@ -4,6 +4,12 @@ variable "domain_name" {
   description = "name of Elasticsearch Domain"
 }
 
+variable "sourceIp" {
+  type        = string
+  default     = ""
+  description = "Source IP"
+}
+
 variable "elasticsearch_version" {
   type        = string
   default     = "6.5"
