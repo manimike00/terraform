@@ -56,7 +56,7 @@ resource "aws_elasticsearch_domain" "default" {
   }
 
   tags = {
-    Domain = "TestDomain"
+    Domain = var.domain_name
   }
 
 }
