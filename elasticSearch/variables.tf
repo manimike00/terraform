@@ -18,7 +18,7 @@ variable "vpc_id" {
 
 variable "subnet_ids" {
   type = list(string)
-  description = "List of Subnetes"
+  description = "List of Subnets"
 }
 
 variable "elasticsearch_version" {
