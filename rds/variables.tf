@@ -10,6 +10,10 @@ variable "subnets" {
   type = list(string)
 }
 
+variable "identifier" {
+  type = string
+}
+
 variable "vpc_id" {
   type = string
 }
