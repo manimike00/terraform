@@ -10,4 +10,5 @@ resource "aws_db_instance" "dbInstance" {
   parameter_group_name = aws_db_parameter_group.dbParameterGroup.name
   db_subnet_group_name = aws_db_subnet_group.dbSubnetGroup.name
   skip_final_snapshot  = var.skip_final_snapshot
+  final_snapshot_identifier = var.final_snapshot_identifier
 }

@@ -49,3 +49,7 @@ variable "password" {
 variable "skip_final_snapshot" {
   type = bool
 }
+
+variable "final_snapshot_identifier" {
+  type = bool
+}
