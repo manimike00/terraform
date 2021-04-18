@@ -3,12 +3,12 @@ resource "aws_db_instance" "dbInstance" {
   engine               = var.engine
   engine_version       = var.engine_version
   instance_class       = var.instance_class
-  identifier           = var.identifier
+  #identifier           = var.identifier
   name                 = var.name
   username             = var.username
   password             = var.password
   parameter_group_name = aws_db_parameter_group.dbParameterGroup.name
   db_subnet_group_name = aws_db_subnet_group.dbSubnetGroup.name
   skip_final_snapshot  = var.skip_final_snapshot
-  final_snapshot_identifier = var.final_snapshot_identifier
+  backup_retention_period = 0
 }
