@@ -1,3 +1,7 @@
+resource "aws_iam_service_linked_role" "es" {
+  aws_service_name = "es.amazonaws.com"
+}
+
 resource "aws_security_group" "es" {
   name = "${var.domain_name}-es-sg"
   description = "For ElasticSearch Security Group"
@@ -12,7 +16,9 @@ resource "aws_security_group" "es" {
 
 }
 
-resource "aws_elasticsearch_domain" "default" {
+resource "aws_elasticsearch_domain" "es" {
+  depends_on = [aws_iam_service_linked_role.es]
+
   domain_name           = var.domain_name
   elasticsearch_version = var.elasticsearch_version
 
