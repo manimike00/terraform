@@ -1,8 +1,28 @@
+resource "aws_security_group" "es" {
+  name = "${var.domain_name}-es-sg"
+  description = "For ElasticSearch Security Group"
+  vpc_id = var.vpc_id
+
+  ingress {
+    from_port = 443
+    protocol = "tcp"
+    to_port = 443
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+}
+
 resource "aws_elasticsearch_domain" "default" {
   domain_name           = var.domain_name
   elasticsearch_version = var.elasticsearch_version
 
+  vpc_options {
+    security_group_ids = [aws_security_group.es.id]
+    subnet_ids         = [var.subnet_ids]
+  }
+
   advanced_options = var.advanced_options
+
 
   ebs_options {
     ebs_enabled = var.ebs_volume_size > 0 ? true : false

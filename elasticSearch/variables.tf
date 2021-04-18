@@ -10,6 +10,17 @@ variable "sourceIp" {
   description = "Source IP"
 }
 
+variable "vpc_id" {
+  type = string
+  default = ""
+  description = "VPC ID"
+}
+
+variable "subnet_ids" {
+  type = list(string)
+  description = "List of Subnetes"
+}
+
 variable "elasticsearch_version" {
   type        = string
   default     = "6.5"
