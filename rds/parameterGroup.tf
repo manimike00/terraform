@@ -1,5 +1,5 @@
 resource "aws_db_parameter_group" "dbParameterGroup" {
-  name   = "${var.name}-pg"
+  name   = "${var.name}-rds-pg"
   family = var.family
 
   parameter {

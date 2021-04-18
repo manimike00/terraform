@@ -1,5 +1,5 @@
 resource "aws_security_group" "securityGroup" {
-  name                  = "${var.name}-security-group"
+  name                  = "${var.name}-rds-sg"
   vpc_id                = var.vpc_id
   ingress {
     from_port           = var.port
