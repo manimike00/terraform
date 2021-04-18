@@ -1,16 +1,16 @@
 
 output "domain_arn" {
-  value       = join("", aws_elasticsearch_domain.default.*.arn)
+  value       = join("", aws_elasticsearch_domain.es.*.arn)
   description = "ARN of the Elasticsearch domain"
 }
 
 output "domain_id" {
-  value       = join("", aws_elasticsearch_domain.default.*.domain_id)
+  value       = join("", aws_elasticsearch_domain.es.*.domain_id)
   description = "Unique identifier for the Elasticsearch domain"
 }
 
 output "domain_endpoint" {
-  value       = join("", aws_elasticsearch_domain.default.*.endpoint)
+  value       = join("", aws_elasticsearch_domain.es.*.endpoint)
   description = "Domain-specific endpoint used to submit index, search, and data upload requests"
 }
 
