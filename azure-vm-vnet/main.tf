@@ -16,19 +16,19 @@ provider "azurerm" {
 # Resource Group Module
 module "rg" {
   source      = "./rg"
-  environment = "dev"
-  location    = "centralindia"
-  owner       = "rapyder"
-  project     = "perfios"
+  environment = var.environment
+  location    = var.location
+  owner       = var.owner
+  project     = var.project
 }
 
 # Vnet Module
 module "vnet" {
   source      = "./vnet"
-  environment = "dev"
-  location    = "centralindia"
-  owner       = "rapyder"
-  project     = "perfios"
+  environment = var.environment
+  location    = var.location
+  owner       = var.owner
+  project     = var.project
   rg          = module.rg.rg
 }
 
