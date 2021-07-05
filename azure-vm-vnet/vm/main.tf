@@ -13,7 +13,7 @@ resource "azurerm_network_interface" "nic" {
   ip_configuration {
     name                          = "${var.environment}-${var.project}-ip-conf"
     subnet_id                     = var.subnet_id
-    private_ip_address_allocation = "Static"
+    private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.public_ip.id
   }
 
@@ -42,7 +42,7 @@ resource "azurerm_virtual_machine" "vm" {
   storage_image_reference {
     publisher = "Canonical"
     offer     = "UbuntuServer"
-    sku       = "16.04-LTS"
+    sku       = "20.04-LTS"
     version   = "latest"
   }
   storage_os_disk {
@@ -65,4 +65,27 @@ resource "azurerm_virtual_machine" "vm" {
     owner       = var.owner
     project     = var.project
   }
+}
+
+resource "azurerm_managed_disk" "managed-disk" {
+  name                 = "${var.environment}-${var.project}-maneged-disk"
+  location             = var.location
+  resource_group_name  = var.rg
+  storage_account_type = "Standard_LRS"
+  create_option        = "Empty"
+  disk_size_gb         = 50
+
+  tags = {
+    environment = var.environment
+    source      = "Terraform"
+    owner       = var.owner
+    project     = var.project
+  }
+}
+
+resource "azurerm_virtual_machine_data_disk_attachment" "attach-disk" {
+  managed_disk_id    = azurerm_managed_disk.managed-disk.id
+  virtual_machine_id = azurerm_virtual_machine.vm.id
+  lun                = "50"
+  caching            = "ReadWrite"
 }

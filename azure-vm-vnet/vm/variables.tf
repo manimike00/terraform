@@ -7,4 +7,3 @@ variable "subnet_id" {}
 variable "hostname" {}
 variable "username" {}
 variable "password" {}
-variable "public_ip_address_id" {}

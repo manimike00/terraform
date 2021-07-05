@@ -34,15 +34,14 @@ module "vnet" {
 
 # VM Module
 module "vm" {
-  source               = "./vm"
-  environment          = "dev"
-  location             = "centralindia"
-  owner                = "rapyder"
-  project              = "perfios"
-  rg                   = module.rg.rg
-  subnet_id            = module.vnet.public-subnet-id
-  hostname             = "rapyder.com"
-  username             = "rapyder"
-  password             = "azurerapyder@123"
-  public_ip_address_id = module.vnet.public-ip-prefix-id
+  source      = "./vm"
+  environment = var.environment
+  location    = var.location
+  owner       = var.owner
+  project     = var.project
+  rg          = module.rg.rg
+  subnet_id   = module.vnet.public-subnet-id
+  hostname    = var.hostname
+  username    = var.username
+  password    = var.password
 }
