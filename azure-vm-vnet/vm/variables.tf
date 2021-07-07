@@ -7,3 +7,4 @@ variable "subnet_id" {}
 variable "hostname" {}
 variable "username" {}
 variable "password" {}
+variable "type" {}

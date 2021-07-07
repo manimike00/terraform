@@ -24,24 +24,45 @@ module "rg" {
 
 # Vnet Module
 module "vnet" {
-  source      = "./vnet"
-  environment = var.environment
-  location    = var.location
-  owner       = var.owner
-  project     = var.project
-  rg          = module.rg.rg
+  depends_on      = [module.rg]
+  source          = "./vnet"
+  environment     = var.environment
+  location        = var.location
+  owner           = var.owner
+  project         = var.project
+  rg              = module.rg.rg
+  public_subnets  = 4
+  private_subnets = 2
 }
 
 # VM Module
-module "vm" {
+module "bastion" {
+  depends_on  = [module.vnet]
   source      = "./vm"
-  environment = var.environment
+  environment = "bastion" #var.environment
   location    = var.location
   owner       = var.owner
   project     = var.project
   rg          = module.rg.rg
-  subnet_id   = module.vnet.public-subnet-id
+  subnet_id   = module.vnet.public-subnet-id[0]
   hostname    = var.hostname
   username    = var.username
   password    = var.password
+  type        = "public"
+}
+
+# VM Module
+module "dmoapp" {
+  depends_on  = [module.bastion]
+  source      = "./vm"
+  environment = "dmoapp" #var.environment
+  location    = var.location
+  owner       = var.owner
+  project     = var.project
+  rg          = module.rg.rg
+  subnet_id   = module.vnet.private-subnet-id[0]
+  hostname    = var.hostname
+  username    = var.username
+  password    = var.password
+  type        = "private"
 }
