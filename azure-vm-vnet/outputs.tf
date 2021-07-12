@@ -53,3 +53,51 @@
 ////}
 ////
 ////# Module VM
+
+//output "vault_name" {
+//  value = module.vault.vault_name
+//}
+//
+//output "vault_id" {
+//  value = module.vault.vault_id
+//}
+//
+//output "vault_tenant_id" {
+//  value = module.vault.vault_tenant_id
+//}
+//
+//output "vault_uri" {
+//  value = module.vault.vault_uri
+//}
+//
+//output "vault_access_policy_application_id" {
+//  value = module.vault.vault_access_policy_application_id
+//}
+//
+//output "vault_access_policy_certificate_permissions" {
+//  value = module.vault.vault_access_policy_certificate_permissions
+//}
+//
+//output "vault_access_policy_key_permissions" {
+//  value = module.vault.vault_access_policy_key_permissions
+//}
+//
+//output "vault_access_policy_secret_permissions" {
+//  value = module.vault.vault_access_policy_secret_permissions
+//}
+//
+//output "vault_access_policy_storage_permissions" {
+//  value = module.vault.vault_access_policy_storage_permissions
+//}
+//
+//output "vault_key_name" {
+//  value = module.vault.vault_key_name
+//}
+//
+//output "vault_key_version" {
+//  value = module.vault.vault_key_version
+//}
+
+output "disk_encryption_set_id" {
+  value = module.vault.disk_encryption_set_id
+}

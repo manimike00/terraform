@@ -1,0 +1,12 @@
+variable "environment" {}
+variable "project" {}
+variable "owner" {}
+variable "location" {}
+variable "rg" {}
+variable "disk_size_gb" {}
+variable "vm_id" {}
+variable "vm_name" {}
+variable "vault_name" {}
+variable "vault_keyname" {}
+variable "vault_keyversion" {}
+variable "disk_encryption_set_id" {}

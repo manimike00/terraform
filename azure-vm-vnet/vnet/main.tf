@@ -216,15 +216,15 @@ resource "azurerm_route" "pri-route-1" {
   next_hop_type       = "vnetlocal"
 }
 
-//# Create Route for Private Route Table
-//resource "azurerm_route" "pri-route-2" {
-//  depends_on          = [azurerm_route_table.private-rt]
-//  name                = "${var.environment}-${var.project}-private-route-2"
-//  resource_group_name = var.rg
-//  route_table_name    = azurerm_route_table.private-rt.name
-//  address_prefix      = "0.0.0.0/0"
-//  next_hop_type       = "VirtualNetworkGateway"
-//}
+# Create Route for Private Route Table
+resource "azurerm_route" "pri-route-2" {
+  depends_on          = [azurerm_route_table.private-rt]
+  name                = "${var.environment}-${var.project}-private-route-2"
+  resource_group_name = var.rg
+  route_table_name    = azurerm_route_table.private-rt.name
+  address_prefix      = "0.0.0.0/0"
+  next_hop_type       = "VirtualNetworkGateway"
+}
 
 # Associate Subnets with Private Route table
 resource "azurerm_subnet_route_table_association" "pri-rt-att" {
